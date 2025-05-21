@@ -12,9 +12,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-      - run: npm install
-      - run: npx jest
+
+      - name: Instala dependências (incluindo devDependencies)
+        run: npm ci
+
+      - name: Roda testes com Jest
+        run: npx jest
